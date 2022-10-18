@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider_state/home.dart';
+import 'package:provider_state/statefull_widget.dart';
+import 'package:provider_state/stateless_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StateLessWidget(),
+      home: StateFullWidget(),
     );
   }
 }
