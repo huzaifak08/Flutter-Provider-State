@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:provider_state/provider/count_provider.dart';
 import 'package:provider_state/provider/exampleOne_provider.dart';
 import 'package:provider_state/provider/favourite_provider.dart';
+import 'package:provider_state/provider/theme_provider.dart';
 import 'package:provider_state/screens/counter_example.dart';
+import 'package:provider_state/screens/dark_theme.dart';
 import 'package:provider_state/screens/example_one.dart';
 import 'package:provider_state/screens/favourite/favourite_screen.dart';
 import 'package:provider_state/statefull_widget.dart';
@@ -22,13 +24,36 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CountProvider()),
         ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
         ChangeNotifierProvider(create: (_) => FavouriteProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeChangerProvider()),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: FavouriteScreen(),
+
+      // Must use Builder for Theme Changing:
+      child: Builder(
+        builder: (BuildContext context) {
+          // Theme Changer Provider:
+          final themeChanger = Provider.of<ThemeChangerProvider>(context);
+          return MaterialApp(
+            title: 'Flutter Demo',
+
+            // themeMode for changing theme:
+            themeMode: themeChanger.themeMode,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+
+            // Dark Theme:
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+
+              // Change anything according to need.
+              primarySwatch: Colors.amber,
+              iconTheme: IconThemeData(color: Colors.red),
+              appBarTheme: AppBarTheme(backgroundColor: Colors.teal),
+            ),
+
+            home: DarkThemeScreen(),
+          );
+        },
       ),
     );
   }
