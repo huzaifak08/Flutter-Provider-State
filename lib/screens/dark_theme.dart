@@ -11,10 +11,12 @@ class DarkThemeScreen extends StatefulWidget {
 }
 
 class _DarkThemeScreenState extends State<DarkThemeScreen> {
-  late bool isSwitched;
   @override
   Widget build(BuildContext context) {
+    print('build');
+    // Provider initialiation:
     final themeChanger = Provider.of<ThemeChangerProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Dark Theme Screen'),

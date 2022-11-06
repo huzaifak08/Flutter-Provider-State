@@ -8,6 +8,7 @@ import 'package:provider_state/screens/counter_example.dart';
 import 'package:provider_state/screens/dark_theme.dart';
 import 'package:provider_state/screens/example_one.dart';
 import 'package:provider_state/screens/favourite/favourite_screen.dart';
+import 'package:provider_state/screens/value_notify_listener.dart';
 import 'package:provider_state/statefull_widget.dart';
 import 'package:provider_state/stateless_widget.dart';
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(backgroundColor: Colors.teal),
             ),
 
-            home: DarkThemeScreen(),
+            home: NotifyListenerScren(),
           );
         },
       ),
